@@ -16,7 +16,7 @@
 
     mysqli_stmt_store_result($statement);
 
-    mysqli_stmt_bind_result($statement, $colUserID, $colEmail, $colFirstname, $colLastname, $colPassword, $colPhone, $colSvideo, $colSpicture, $colSphone);
+    mysqli_stmt_bind_result($statement, $colUserID, $colEmail, $colFirstname, $colLastname, $colPassword, $colPhone, $colSvideo, $colSpicture, $colSphone, $colOnoff);
     
     $response = array();
 
@@ -33,6 +33,7 @@
               $response["svideo"] = $colSvideo;
               $response["spicture"] = $colSpicture;
               $response["sphone"] = $colSphone;
+              $response["onoff"] = $colOnoff;
               $deviceList = mysqli_query($con, "SELECT id FROM devices WHERE userID = (SELECT user_id FROM user WHERE email = '$email')");
               $array = mysqli_fetch_all($deviceList);
               $response["devicelist"] = $array;
